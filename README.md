@@ -1,2 +1,2 @@
 # rest-url
-Restful URL parse as parameter Object
+RESTful URL parse as parameter Object

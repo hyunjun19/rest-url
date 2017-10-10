@@ -1,0 +1,36 @@
+{
+  "name": "rest-url",
+  "version": "0.1.0",
+  "description": "RESTful URL parse as parameter Object",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc --project tsconfig.json",
+    "install-test-global": "npm install mocha chai ts-node -g && npm install typings -g && typings install dt~mocha --global --save && typings install npm~chai --save",
+    "test": "mocha -r ts-node/register test/**"
+  },
+  "dependencies": {
+    "typescript": "^2.5.2"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.0.4",
+    "@types/mocha": "^2.2.43",
+    "chai": "^4.1.2",
+    "mocha": "^3.5.3",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.5.2",
+    "typings": "^2.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyunjun19/rest-url.git"
+  },
+  "keywords": [
+    "restful"
+  ],
+  "author": "HJ.Park",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hyunjun19/rest-url/issues"
+  },
+  "homepage": "https://github.com/hyunjun19/rest-url#readme"
+}

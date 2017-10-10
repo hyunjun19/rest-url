@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+      "module": "commonjs",
+      "sourceMap": true,
+      "declaration": true,
+      "sourceRoot": "src",
+      "rootDirs": ["src", "test"],
+      "outDir": "dst"
+  },
+  "exclude": [
+      "dst",
+      "node_modules",
+      "typings"
+  ]
+}
