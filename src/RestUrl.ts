@@ -1,9 +1,11 @@
+import ValueMap, { Values } from './ValueMap';
 import Location from './Location';
 import LocationBuilder from './LocationBuilder';
 
 export default class RestUrl {
     private pattern: string;
     private location: Location;
+    private params: ValueMap;
 
     /**
      * 
@@ -30,11 +32,32 @@ export default class RestUrl {
         return uri;
     }
 
-    public getParams(): { [key:string]: any; } {
-        return {};
+    private extractParams(location: Location): ValueMap {
+        // 1. location.pathname => urlPattern
+        // 2. location.search => split
+        // 3. key[] make array
+
+        return null;
+    }
+
+    private extractUrlPatternParams() {
+        
+    }
+
+    private extractSearchParams() {
+
+    }
+
+    private getArrayOrSingleValues(): Values {
+        
+        return null;
+    }
+
+    public getParams(): ValueMap {
+        return this.params;
     }
 
     public toString() {
-        return `RestUrl("${this.pattern}", "${this.location}")`;
+        return `RestUrl("${this.pattern}", ${JSON.stringify(this.location, null, 2)})`;
     }
 }
