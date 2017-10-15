@@ -1,11 +1,12 @@
-import ValueMap, { Values } from './ValueMap';
+import { Values } from './types';
+import Map, { addMapValue } from './Map';
 import Location from './Location';
 import LocationBuilder from './LocationBuilder';
 
 export default class RestUrl {
     private pattern: string;
     private location: Location;
-    private params: ValueMap;
+    private params: Map<Values>;
 
     /**
      * 
@@ -19,6 +20,7 @@ export default class RestUrl {
             .newLocation()
             .setUri(this.getDefaultUri(uri))
             .build();
+        this.params = this.extractParams(this.location);
     }
 
     /**
@@ -32,32 +34,63 @@ export default class RestUrl {
         return uri;
     }
 
-    private extractParams(location: Location): ValueMap {
-        // 1. location.pathname => urlPattern
-        // 2. location.search => split
-        // 3. key[] make array
+    private extractUrlPatternParams(pattern: string, pathname: string): Map<Values> {
+        if (!pattern) return null;
 
-        return null;
+        const routers = pattern.split('/');
+        const urls = pathname.split('/');
+    
+        const params = {};
+        for (let i = 0; i < routers.length; i++) {
+          const matches = routers[i].match(/\{(\w+)\}/);
+          if (matches) {
+            const key = matches[1];
+            const val = urls[i];
+            addMapValue(params, key, val);
+          }
+        }
+
+        return params;
     }
 
-    private extractUrlPatternParams() {
-        
+    private extractSearchParams(queryString: string): Map<Values> {
+        if (!queryString) return null;
+    
+        const params = {};
+        const keyVals = queryString.substring(1).split('&');
+        for (let i = 0; i < keyVals.length; i++) {
+          var keyVal = keyVals[i].split('=');
+          var key = keyVal[0];
+          var val = keyVal[1];
+    
+          addMapValue(params, key, val);
+        }
+
+        return params;
     }
 
-    private extractSearchParams() {
+    /**
+     * Location 에서 파라미터 값을 추출한다
+     * @return 만약 URL 패턴에서 추출된 키와 queryString에서 추출된 키가 중복되는 경우 URL 패턴에서 추출된 키값으로 덮어쓴다.
+     */
+    private extractParams(location: Location): Map<Values> {
+        const urlParam = this.extractUrlPatternParams(this.pattern, location.pathname);
+        const searchParam = this.extractSearchParams(this.location.search);
+        let mergedParam = {};
 
+        Object.assign(mergedParam, searchParam, urlParam);
+        return mergedParam;
     }
 
-    private getArrayOrSingleValues(): Values {
-        
-        return null;
+    public getLocation(): Location {
+        return this.location;
     }
 
-    public getParams(): ValueMap {
+    public getParams(): Map<Values> {
         return this.params;
     }
 
     public toString() {
-        return `RestUrl("${this.pattern}", ${JSON.stringify(this.location, null, 2)})`;
+        return `RestUrl class \npaatern: "${this.pattern}" \nlocation: ${JSON.stringify(this.location, null, 2)}) \nparams: ${JSON.stringify(this.params, null, 2)}`;
     }
 }
