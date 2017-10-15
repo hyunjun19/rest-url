@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var LocationBuilder = /** @class */ (function () {
     function LocationBuilder() {
         this.uriRegex = /((https?:)(\/\/\/?)([\w]*(?::[\w]*)?@)?([\d\w\.-]+)(?::(\d+))?)?([\/\\\w\.()-]*)?(?:([?][^#]*)?(#.*)?)*/gi;
@@ -29,5 +29,5 @@ var LocationBuilder = /** @class */ (function () {
     };
     return LocationBuilder;
 }());
-exports["default"] = LocationBuilder;
+exports.default = LocationBuilder;
 //# sourceMappingURL=LocationBuilder.js.map

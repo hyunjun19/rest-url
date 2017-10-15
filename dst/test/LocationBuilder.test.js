@@ -1,11 +1,11 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var chai_1 = require("chai");
 var LocationBuilder_1 = require("../src/LocationBuilder");
 describe('LocationBuilder class', function () {
     it('Location 인터페이스에 맞는 인스턴스를 리턴', function () {
         var uri = 'https://www.thegajago.com/api/v4/hotel/deals?pageNumber=0&pageSize=20&sort=BEST&checkIn=2017-09-27&checkOut=2017-09-28&adultCount=3&regionId=1261&typeIds=1644%2C1645&isSearchable=true#header';
-        var location = LocationBuilder_1["default"]
+        var location = LocationBuilder_1.default
             .newLocation()
             .setUri(uri)
             .build();
