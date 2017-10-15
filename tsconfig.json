@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-      "module": "commonjs",
+      "target": "ES6",
+      "module": "CommonJS",
       "sourceMap": true,
       "declaration": true,
       "sourceRoot": "src",
