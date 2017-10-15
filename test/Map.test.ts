@@ -23,14 +23,15 @@ describe('Map interface', () => {
         expect(map[key]).to.instanceOf(Array);
     });
 
-    it('addMapValue 등록하려는 키가 [] 문자열로 끝나면 값을 배열로 넣는다.', () => {
+    it('addMapValue 등록하려는 키가 [] 문자열로 끝나면 키에서 [] 문자열을 제거하고 값을 배열로 넣는다.', () => {
         const key = 'tk-3[]';
+        const key1 = key.replace('[]', '');
         const map: Map<Values> = {};
 
         addMapValue(map, key, 'one');
-        expect(map[key]).to.instanceOf(Array);
+        expect(map[key1]).to.instanceOf(Array);
 
         addMapValue(map, key, 'two');
-        expect(map[key]).to.deep.equal(['one', 'two']);
+        expect(map[key1]).to.deep.equal(['one', 'two']);
     });
 });

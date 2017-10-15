@@ -15,6 +15,18 @@ function isArrayKey(key: string): boolean {
     return key.indexOf('[]') === (key.length - 2);
 }
 
+function addArrayValue(map, key, value) {
+    let origin = map[key] || [];
+    
+    if (isArray(origin) === false) {
+        origin = [origin];
+    }
+    
+    origin.push(value);
+    
+    map[key] = origin;
+}
+
 export function addMapValue(map, key: string, value): boolean {
     try {
         if (!key) throw new Error(`key must be exist. key: '${key}'`);
@@ -26,16 +38,11 @@ export function addMapValue(map, key: string, value): boolean {
         const isArrayVal = isArray(map[key]);
         const isExistKey = key in map;
 
-        if (isArrayVal || isExistKey || isArrayKey(key)) {
-            let origin = map[key] || [];
-
-            if (isArray(origin) === false) {
-                origin = [origin];
-            }
-
-            origin.push(decodedValue);
-            
-            map[key] = origin;
+        if (isArrayVal || isExistKey) {
+            addArrayValue(map, key, decodedValue);
+        } else if (isArrayKey(key)) {
+            const arrayKey = key.substring(0, key.length - 2);
+            addArrayValue(map, arrayKey, decodedValue);
         } else {
             map[key] = decodedValue;
         }
