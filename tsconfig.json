@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
-      "target": "ES6",
+      "target": "ES5",
       "module": "CommonJS",
       "sourceMap": true,
       "declaration": true,
       "sourceRoot": "src",
       "rootDirs": ["src", "test"],
-      "outDir": "dst"
+      "outDir": "dst",
+      "lib": ["dom", "es6"]
   },
   "exclude": [
       "dst",
