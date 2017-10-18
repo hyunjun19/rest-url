@@ -1,5 +1,5 @@
 {
-  "name": "rest-url",
+  "name": "@hyunjun19/rest-url",
   "version": "0.1.0",
   "description": "RESTful URL parse as parameter Object",
   "main": "index.js",
@@ -32,5 +32,8 @@
   "bugs": {
     "url": "https://github.com/hyunjun19/rest-url/issues"
   },
-  "homepage": "https://github.com/hyunjun19/rest-url#readme"
+  "homepage": "https://github.com/hyunjun19/rest-url#readme",
+  "directories": {
+    "test": "test"
+  }
 }
