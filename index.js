@@ -1,3 +1,3 @@
-import RestUrl from './src/RestUrl';
+import RestUrl from './dst/src/RestUrl';
 
 export default RestUrl;
