@@ -1,6 +1,6 @@
 {
   "name": "@hyunjun19/rest-url",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "RESTful URL parse as parameter Object",
   "main": "index.js",
   "scripts": {
